@@ -1,0 +1,207 @@
+/* color palette from <https://github.com/vuejs/theme> */
+:root {
+  --vt-c-white: #ffffff;
+  --vt-c-white-soft: #f8f8f8;
+  --vt-c-white-mute: #f2f2f2;
+
+  --vt-c-black: #181818;
+  --vt-c-black-soft: #222222;
+  --vt-c-black-mute: #282828;
+
+  --vt-c-indigo: #2c3e50;
+
+  --vt-c-divider-light-1: rgba(60, 60, 60, 0.29);
+  --vt-c-divider-light-2: rgba(60, 60, 60, 0.12);
+  --vt-c-divider-dark-1: rgba(84, 84, 84, 0.65);
+  --vt-c-divider-dark-2: rgba(84, 84, 84, 0.48);
+
+  --vt-c-text-light-1: var(--vt-c-indigo);
+  --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
+  --vt-c-text-dark-1: var(--vt-c-white);
+  --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
+}
+
+/* semantic color variables for this project */
+:root {
+  --color-background: var(--vt-c-white);
+  --color-background-soft: var(--vt-c-white-soft);
+  --color-background-mute: var(--vt-c-white-mute);
+
+  --color-border: var(--vt-c-divider-light-2);
+  --color-border-hover: var(--vt-c-divider-light-1);
+
+  --color-heading: var(--vt-c-text-light-1);
+  --color-text: var(--vt-c-text-light-1);
+
+  --section-gap: 160px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: var(--vt-c-black);
+    --color-background-soft: var(--vt-c-black-soft);
+    --color-background-mute: var(--vt-c-black-mute);
+
+    --color-border: var(--vt-c-divider-dark-2);
+    --color-border-hover: var(--vt-c-divider-dark-1);
+
+    --color-heading: var(--vt-c-text-dark-1);
+    --color-text: var(--vt-c-text-dark-2);
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  position: relative;
+  /* font-weight: normal; */
+}
+
+body {
+  min-height: 100vh;
+  color: var(--color-text);
+  background: var(--color-background);
+  transition: color 0.5s, background-color 0.5s;
+  line-height: 1.6;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans',
+    'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-size: 14px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.p-checkbox {
+  margin-right: 4px;
+}
+
+.p-button {
+  padding: 0.25rem 0.5rem !important;
+  font-size: 14px !important;
+}
+
+.p-tabview-nav {
+  font-size: 14px !important;
+}
+
+.p-treetable-thead {
+  z-index: 0 !important;
+}
+
+.phasing-btn {
+  background: url(../images/phases.png) no-repeat;
+  background-position: center;
+  height: 24px;
+  width: 24px;
+}
+
+.phasing-panel-container {
+  color: #f2f2f2;
+  height: calc(100% - 20px);
+  padding: 10px;
+  width: calc(100% - 20px);
+}
+
+.phasing-panel-button-row {
+  display: flex;
+  justify-content: center;
+  margin: 4px;
+}
+
+.phasing-panel-btn {
+  border: 1px solid #9b9b9b;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-block;
+  height: 32px;
+  width: 32px;
+  margin: 4px 8px 4px 8px;
+  padding: 4px 4px 4px 4px;
+}
+
+.phasing-panel-btn.first {
+  background: url(../images/first-phase.png) no-repeat center;
+}
+
+.phasing-panel-btn.last {
+  background: url(../images/last-phase.png) no-repeat center;
+}
+
+.phasing-panel-btn.prev {
+  background: url(../images/prev-phase.png) no-repeat center;
+}
+
+.phasing-panel-btn.next {
+  background: url(../images/next-phase.png) no-repeat center;
+}
+
+.phasing-panel-btn.replay {
+  background: url(../images/replay.png) no-repeat center;
+}
+
+.phasing-panel-row {
+  margin: 4px;
+}
+
+.report-btn {
+  background: url(../images/report.png) no-repeat;
+  background-position: center;
+  height: 24px;
+  width: 24px;
+}
+
+.phasing-chart-container {
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+}
+
+.tooltip {
+  position: absolute;
+  background-color: #e2e2e2;
+  border-radius: 4px;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.3);
+  color: #141414;
+  display: inline-block;
+  font-family: 'Helvetica Neue', sans-serif;
+  font-size: 12px;
+  font-weight: 200;
+  padding: 4px;
+  text-align: left;
+  pointer-events: none;
+}
+
+.tooltip.hidden {
+  visibility: hidden;
+}
+
+.tooltip > div > span {
+  display: inline-block;
+  margin-right: 6px;
+  height: 10px;
+  width: 10px;
+}
+
+/* Plottable overrides */
+.plottable .axis text {
+  fill: #f2f2f2;
+}
+
+.adsk-viewing-viewer .adsk-toolbar {
+  border-top: 2px solid rgb(0, 0, 0);
+  width: 100%;
+  padding: 2px;
+}
+#comparePanelId {
+  height: 100%;
+}
+#takeoffPanelId {
+  height: 100%;
+  min-width: 400px;
+}
